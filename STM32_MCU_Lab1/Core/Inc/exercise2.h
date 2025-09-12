@@ -13,10 +13,7 @@
 
 /* Variables */
 extern int currentState;
-
-extern int RED_counter;
-extern int YELLOW_counter;
-extern int GREEN_counter;
+extern int counter;
 
 /* Functions */
 extern void trafficLight();
