@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "exercise3.h"
+#include "exercise5.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -151,11 +151,16 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, N_RED_LED_Pin|N_YEL_LED_Pin|N_GRN_LED_Pin|E_RED_LED_Pin
                           |E_YEL_LED_Pin|E_GRN_LED_Pin|S_RED_LED_Pin|S_YEL_LED_Pin
                           |S_GRN_LED_Pin|W_RED_LED_Pin|W_YEL_LED_Pin|W_GRN_LED_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, LED7_a_Pin|LED7_b_Pin|LED7_c_Pin|LED7_d_Pin
+                          |LED7_e_Pin|LED7_f_Pin|LED7_g_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : N_RED_LED_Pin N_YEL_LED_Pin N_GRN_LED_Pin E_RED_LED_Pin
                            E_YEL_LED_Pin E_GRN_LED_Pin S_RED_LED_Pin S_YEL_LED_Pin
@@ -167,6 +172,15 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : LED7_a_Pin LED7_b_Pin LED7_c_Pin LED7_d_Pin
+                           LED7_e_Pin LED7_f_Pin LED7_g_Pin */
+  GPIO_InitStruct.Pin = LED7_a_Pin|LED7_b_Pin|LED7_c_Pin|LED7_d_Pin
+                          |LED7_e_Pin|LED7_f_Pin|LED7_g_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */

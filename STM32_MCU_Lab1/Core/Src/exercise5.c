@@ -6,7 +6,8 @@
  */
 
 /* Includes */
-#include "exercise3.h"
+#include "exercise5.h"
+#include "led_7seg.h"
 
 /* Define */
 #define NS_GREEN	0		// North-South GREEN
@@ -17,6 +18,7 @@
 /* Variables */
 int currentState = NS_GREEN;
 int counter = 3;				// GREEN LED is 3s
+int redCounter = 4;				// counter for RED LED - display on LED 7SEG
 
 /* Functions */
 // Control the North-South traffic light
@@ -48,6 +50,7 @@ void trafficLight4Ways() {
 		setLight_NS(SET, SET, RESET);		// North-South is GREEN
 		setLight_EW(RESET, SET, SET);		// East-West is RED
 		counter--;
+		display7SEG(counter);
 		if (counter == 0) {
 			currentState = NS_YELLOW;
 			counter = 2;					// YELLOW LED is 2s
@@ -58,6 +61,7 @@ void trafficLight4Ways() {
 		setLight_NS(SET, RESET, SET);		// North-South is YELLOW
 		setLight_EW(RESET, SET, SET);		// East-West is RED
 		counter--;
+		display7SEG(counter);
 		if (counter == 0) {
 			currentState = EW_GREEN;
 			counter = 3;					// GREEN LED is 3s
@@ -65,6 +69,7 @@ void trafficLight4Ways() {
 		break;
 
 	case EW_GREEN:
+		display7SEG(redCounter--);
 		setLight_NS(RESET, SET, SET);		// North-South is RED
 		setLight_EW(SET, SET, RESET);		// East-West is GREEN
 		counter--;
@@ -75,6 +80,10 @@ void trafficLight4Ways() {
 		break;
 
 	case EW_YELLOW:
+		display7SEG(redCounter--);
+		if (redCounter == 0) {
+			redCounter = 4;
+		}
 		setLight_NS(RESET, SET, SET);		// North-South is RED
 		setLight_EW(SET, RESET, SET);		// East-West is YELLOW
 		counter--;

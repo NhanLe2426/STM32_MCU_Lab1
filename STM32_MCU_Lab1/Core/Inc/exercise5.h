@@ -5,11 +5,12 @@
  *      Author: ASUS
  */
 
-#ifndef INC_EXERCISE3_H_
-#define INC_EXERCISE3_H_
+#ifndef INC_EXERCISE5_H_
+#define INC_EXERCISE5_H_
 
 /* Includes */
 #include "main.h"
+#include "led_7seg.h"
 
 /* Variables */
 extern int currentState;
@@ -23,4 +24,4 @@ extern void setLight_EW(int red, int yellow, int green);
 // 4-ways traffic light
 extern void trafficLight4Ways();
 
-#endif /* INC_EXERCISE3_H_ */
+#endif /* INC_EXERCISE5_H_ */
