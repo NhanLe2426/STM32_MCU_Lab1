@@ -93,12 +93,13 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_All, RESET);
   while (1)
   {
-	  setNumberOnClock(hour[count]);
+	  clearNumberOnClock(hour[count]);
 	  count++;
 	  if (count > 11) {
-		  clearAllClock();
+		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_All, RESET);
 	  }
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
