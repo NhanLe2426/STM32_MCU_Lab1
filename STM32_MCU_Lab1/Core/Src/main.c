@@ -22,6 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "exercise7.h"
+#include "exercise8.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -86,20 +87,19 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-
+  int hour[12] = { 0, 3, 6, 9, 1, 4, 7, 10, 2, 5, 8, 11 };
+  int count = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  // Turn on the LED on 12h, 3h, 6h and 9h
-	  HAL_GPIO_WritePin(LED_0_GPIO_Port, LED_0_Pin, RESET);
-	  HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, RESET);
-	  HAL_GPIO_WritePin(LED_6_GPIO_Port, LED_6_Pin, RESET);
-	  HAL_GPIO_WritePin(LED_9_GPIO_Port, LED_9_Pin, RESET);
-
-	  clearAllClock();
+	  setNumberOnClock(hour[count]);
+	  count++;
+	  if (count > 11) {
+		  clearAllClock();
+	  }
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
