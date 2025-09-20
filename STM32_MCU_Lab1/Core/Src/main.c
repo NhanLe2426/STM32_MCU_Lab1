@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "exercise7.h"
+#include "exercise10.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -91,15 +91,10 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  clearAllClock();
   while (1)
   {
-	  // Turn on the LED on 12h, 3h, 6h and 9h
-	  HAL_GPIO_WritePin(LED_0_GPIO_Port, LED_0_Pin, RESET);
-	  HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, RESET);
-	  HAL_GPIO_WritePin(LED_6_GPIO_Port, LED_6_Pin, RESET);
-	  HAL_GPIO_WritePin(LED_9_GPIO_Port, LED_9_Pin, RESET);
-
-	  clearAllClock();
+	  displayClock();
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
