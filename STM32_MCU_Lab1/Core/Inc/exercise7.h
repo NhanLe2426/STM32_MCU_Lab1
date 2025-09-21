@@ -12,6 +12,7 @@
 #include "main.h"
 
 /* Functions */
+extern void displayLED(int num);
 extern void clearAllClock();
 
 #endif /* INC_EXERCISE7_H_ */

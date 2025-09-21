@@ -86,20 +86,19 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-
+  int counter = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_All, SET);
   while (1)
   {
-	  // Turn on the LED on 12h, 3h, 6h and 9h
-	  HAL_GPIO_WritePin(LED_0_GPIO_Port, LED_0_Pin, RESET);
-	  HAL_GPIO_WritePin(LED_3_GPIO_Port, LED_3_Pin, RESET);
-	  HAL_GPIO_WritePin(LED_6_GPIO_Port, LED_6_Pin, RESET);
-	  HAL_GPIO_WritePin(LED_9_GPIO_Port, LED_9_Pin, RESET);
-
-	  clearAllClock();
+	  displayLED(counter++);
+	  if (counter > 12) {
+		  counter = 0;
+		  clearAllClock();
+	  }
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
