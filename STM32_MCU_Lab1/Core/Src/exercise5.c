@@ -81,15 +81,13 @@ void trafficLight4Ways() {
 
 	case EW_YELLOW:
 		display7SEG(redCounter--);
-		if (redCounter == 0) {
-			redCounter = 4;
-		}
 		setLight_NS(RESET, SET, SET);		// North-South is RED
 		setLight_EW(SET, RESET, SET);		// East-West is YELLOW
 		counter--;
 		if (counter == 0) {
 			currentState = NS_GREEN;
 			counter = 3;					// GREEN LED is 3s
+			redCounter = 4;					// reset counter for RED LED
 		}
 		break;
 	}
