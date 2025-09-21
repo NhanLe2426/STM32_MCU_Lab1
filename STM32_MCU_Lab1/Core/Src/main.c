@@ -91,6 +91,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_All, SET);
   while (1)
   {
 	  if (counter > 12) counter = 0;
