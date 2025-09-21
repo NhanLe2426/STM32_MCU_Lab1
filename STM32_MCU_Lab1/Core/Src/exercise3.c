@@ -9,14 +9,15 @@
 #include "exercise3.h"
 
 /* Define */
-#define NS_GREEN	0		// North-South GREEN
-#define NS_YELLOW	1		// North-South YELLOW
-#define EW_GREEN 	2		// East-West GREEN
-#define EW_YELLOW 	3		// East-West YELLOW
+#define INIT_STATE	0
+#define NS_GREEN	1		// North-South GREEN
+#define NS_YELLOW	2		// North-South YELLOW
+#define EW_GREEN 	3		// East-West GREEN
+#define EW_YELLOW 	4		// East-West YELLOW
 
 /* Variables */
-int currentState = NS_GREEN;
-int counter = 3;				// GREEN LED is 3s
+int currentState = INIT_STATE;
+int counter;				// GREEN LED is 3s
 
 /* Functions */
 // Control the North-South traffic light
@@ -44,6 +45,12 @@ void setLight_EW(int red, int yellow, int green) {
 // 4-ways traffic light
 void trafficLight4Ways() {
 	switch (currentState) {
+	case INIT_STATE:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_All, SET);
+		currentState = NS_GREEN;
+		counter = 3;
+		break;
+
 	case NS_GREEN:
 		setLight_NS(SET, SET, RESET);		// North-South is GREEN
 		setLight_EW(RESET, SET, SET);		// East-West is RED
