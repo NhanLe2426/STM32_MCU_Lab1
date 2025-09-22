@@ -93,12 +93,14 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  clearAllClock();
   while (1)
   {
 	  setNumberOnClock(hour[count]);
 	  count++;
-	  if (count > 11) {
+	  if (count > 12) {
 		  clearAllClock();
+		  count = 0;
 	  }
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
