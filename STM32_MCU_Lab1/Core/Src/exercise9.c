@@ -21,6 +21,12 @@ uint16_t LED_Pin[12] = {
 		LED_8_Pin, LED_9_Pin, LED_10_Pin, LED_11_Pin
 };
 
+void setNumberOnClock(int num) {
+	if (num < 0 || num > 11) return;
+
+	HAL_GPIO_WritePin(LED_PORT[num], LED_Pin[num], RESET);
+}
+
 void clearNumberOnClock(int num) {
 	if (num < 0 || num > 11) return;
 

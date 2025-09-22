@@ -12,6 +12,7 @@
 #include "main.h"
 
 /* Functions */
+extern void setNumberOnClock(int num);
 extern void clearNumberOnClock(int num);
 
 #endif /* INC_EXERCISE9_H_ */

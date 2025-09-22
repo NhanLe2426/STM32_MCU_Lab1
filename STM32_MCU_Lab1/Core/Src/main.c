@@ -22,7 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "exercise7.h"
-#include "exercise8.h"
+#include "exercise9.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -94,12 +94,14 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_All, RESET);
+  HAL_Delay(1000);
   while (1)
   {
 	  clearNumberOnClock(hour[count]);
 	  count++;
-	  if (count > 11) {
+	  if (count > 12) {
 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_All, RESET);
+		  count = 0;
 	  }
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
