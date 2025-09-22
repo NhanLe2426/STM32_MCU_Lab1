@@ -1,0 +1,4 @@
+../Core/Src/exercise10.c:30:6:setNumberOnClock	3
+../Core/Src/exercise10.c:36:6:clearNumberOnClock	3
+../Core/Src/exercise10.c:42:6:clearAllClock	1
+../Core/Src/exercise10.c:46:6:displayClock	10

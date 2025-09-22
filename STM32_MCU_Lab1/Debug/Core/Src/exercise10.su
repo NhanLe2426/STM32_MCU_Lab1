@@ -1,0 +1,4 @@
+../Core/Src/exercise10.c:30:6:setNumberOnClock	16	static
+../Core/Src/exercise10.c:36:6:clearNumberOnClock	16	static
+../Core/Src/exercise10.c:42:6:clearAllClock	8	static
+../Core/Src/exercise10.c:46:6:displayClock	24	static

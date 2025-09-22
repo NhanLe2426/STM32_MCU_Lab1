@@ -22,9 +22,9 @@ uint16_t LED_Pin[12] = {
 		LED_8_Pin, LED_9_Pin, LED_10_Pin, LED_11_Pin
 };
 
-int hour = 0;
-int min = 0;
-int sec = 0;
+int hour = 10;
+int min = 55;
+int sec = 30;
 
 /* Functions */
 void setNumberOnClock(int num) {
@@ -68,7 +68,7 @@ void displayClock() {
 	preSecPos = secPos;
 
 	sec++;
-	if (second == 60) {
+	if (sec == 60) {
 		sec = 0;
 		min++;
 		if (min == 60) {
