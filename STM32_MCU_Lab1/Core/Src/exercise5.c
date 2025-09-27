@@ -51,7 +51,7 @@ void trafficLight4Ways() {
 		setLight_EW(RESET, SET, SET);		// East-West is RED
 		counter--;
 		display7SEG(counter);
-		if (counter == 0) {
+		if (counter <= 0) {
 			currentState = NS_YELLOW;
 			counter = 2;					// YELLOW LED is 2s
 		}
@@ -62,7 +62,7 @@ void trafficLight4Ways() {
 		setLight_EW(RESET, SET, SET);		// East-West is RED
 		counter--;
 		display7SEG(counter);
-		if (counter == 0) {
+		if (counter <= 0) {
 			currentState = EW_GREEN;
 			counter = 3;					// GREEN LED is 3s
 		}
@@ -73,7 +73,7 @@ void trafficLight4Ways() {
 		setLight_NS(RESET, SET, SET);		// North-South is RED
 		setLight_EW(SET, SET, RESET);		// East-West is GREEN
 		counter--;
-		if (counter == 0) {
+		if (counter <= 0) {
 			currentState = EW_YELLOW;
 			counter = 2;					// YELLOW LED is 2s
 		}
@@ -84,11 +84,14 @@ void trafficLight4Ways() {
 		setLight_NS(RESET, SET, SET);		// North-South is RED
 		setLight_EW(SET, RESET, SET);		// East-West is YELLOW
 		counter--;
-		if (counter == 0) {
+		if (counter <= 0) {
 			currentState = NS_GREEN;
 			counter = 3;					// GREEN LED is 3s
 			redCounter = 4;					// reset counter for RED LED
 		}
+		break;
+
+	default:
 		break;
 	}
 }
