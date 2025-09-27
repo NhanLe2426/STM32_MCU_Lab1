@@ -99,6 +99,7 @@ int main(void)
   {
 	  clearNumberOnClock(hour[count]);
 	  count++;
+	  // All the LEDs will turn OFF for bonus 1s before turning ON
 	  if (count > 12) {
 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_All, RESET);
 		  count = 0;
