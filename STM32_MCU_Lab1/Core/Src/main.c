@@ -98,6 +98,7 @@ int main(void)
   {
 	  setNumberOnClock(hour[count]);
 	  count++;
+	  // All the LEDs will turn ON for bonus 1s before turning OFF by using clearAllClock()
 	  if (count > 12) {
 		  clearAllClock();
 		  count = 0;
