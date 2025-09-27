@@ -39,9 +39,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_macro  00015703  00000000  00000000  0002402b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   00005058  00000000  00000000  0003972e  2**0
+ 18 .debug_line   00005056  00000000  00000000  0003972e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    00079892  00000000  00000000  0003e786  2**0
+ 19 .debug_str    00079892  00000000  00000000  0003e784  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  20 .debug_frame  00000d58  00000000  00000000  000b8018  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -94,12 +94,12 @@ void toggleLED() {
  8000156:	d002      	beq.n	800015e <toggleLED+0x12>
  8000158:	2b01      	cmp	r3, #1
  800015a:	d01a      	beq.n	8000192 <toggleLED+0x46>
-			currentState = RED_STATE;
 			counter = 2;
 		}
 		break;
-	}
-}
+
+	default:
+		break;
  800015c:	e036      	b.n	80001cc <toggleLED+0x80>
 		HAL_GPIO_WritePin(RED_LED_GPIO_Port, RED_LED_Pin, RESET);
  800015e:	2200      	movs	r2, #0
@@ -117,11 +117,11 @@ void toggleLED() {
  8000176:	3b01      	subs	r3, #1
  8000178:	4a17      	ldr	r2, [pc, #92]	; (80001d8 <toggleLED+0x8c>)
  800017a:	6013      	str	r3, [r2, #0]
-		if (counter == 0) {
+		if (counter <= 0) {
  800017c:	4b16      	ldr	r3, [pc, #88]	; (80001d8 <toggleLED+0x8c>)
  800017e:	681b      	ldr	r3, [r3, #0]
  8000180:	2b00      	cmp	r3, #0
- 8000182:	d120      	bne.n	80001c6 <toggleLED+0x7a>
+ 8000182:	dc20      	bgt.n	80001c6 <toggleLED+0x7a>
 			currentState = YELLOW_STATE;
  8000184:	4b12      	ldr	r3, [pc, #72]	; (80001d0 <toggleLED+0x84>)
  8000186:	2201      	movs	r2, #1
@@ -148,11 +148,11 @@ void toggleLED() {
  80001aa:	3b01      	subs	r3, #1
  80001ac:	4a0a      	ldr	r2, [pc, #40]	; (80001d8 <toggleLED+0x8c>)
  80001ae:	6013      	str	r3, [r2, #0]
-		if (counter == 0) {
+		if (counter <= 0) {
  80001b0:	4b09      	ldr	r3, [pc, #36]	; (80001d8 <toggleLED+0x8c>)
  80001b2:	681b      	ldr	r3, [r3, #0]
  80001b4:	2b00      	cmp	r3, #0
- 80001b6:	d108      	bne.n	80001ca <toggleLED+0x7e>
+ 80001b6:	dc08      	bgt.n	80001ca <toggleLED+0x7e>
 			currentState = RED_STATE;
  80001b8:	4b05      	ldr	r3, [pc, #20]	; (80001d0 <toggleLED+0x84>)
  80001ba:	2200      	movs	r2, #0
@@ -168,6 +168,7 @@ void toggleLED() {
  80001c8:	e000      	b.n	80001cc <toggleLED+0x80>
 		break;
  80001ca:	bf00      	nop
+	}
 }
  80001cc:	bf00      	nop
  80001ce:	bd80      	pop	{r7, pc}

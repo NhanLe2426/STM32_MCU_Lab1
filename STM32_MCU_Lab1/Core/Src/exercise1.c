@@ -23,7 +23,7 @@ void toggleLED() {
 		HAL_GPIO_WritePin(RED_LED_GPIO_Port, RED_LED_Pin, RESET);
 		HAL_GPIO_WritePin(YELLOW_LED_GPIO_Port, YELLOW_LED_Pin, SET);
 		counter--;
-		if (counter == 0) {
+		if (counter <= 0) {
 			currentState = YELLOW_STATE;
 			counter = 2;
 		}
@@ -33,10 +33,13 @@ void toggleLED() {
 		HAL_GPIO_WritePin(RED_LED_GPIO_Port, RED_LED_Pin, SET);
 		HAL_GPIO_WritePin(YELLOW_LED_GPIO_Port, YELLOW_LED_Pin, RESET);
 		counter--;
-		if (counter == 0) {
+		if (counter <= 0) {
 			currentState = RED_STATE;
 			counter = 2;
 		}
+		break;
+
+	default:
 		break;
 	}
 }
