@@ -9,15 +9,14 @@
 #include "exercise3.h"
 
 /* Define */
-#define INIT_STATE	0
 #define NS_GREEN	1		// North-South GREEN
 #define NS_YELLOW	2		// North-South YELLOW
 #define EW_GREEN 	3		// East-West GREEN
 #define EW_YELLOW 	4		// East-West YELLOW
 
 /* Variables */
-int currentState = INIT_STATE;
-int counter;				// GREEN LED is 3s
+int currentState = NS_GREEN;
+int counter = 3;			// GREEN LED is 3s
 
 /* Functions */
 // Control the North-South traffic light
@@ -45,17 +44,11 @@ void setLight_EW(int red, int yellow, int green) {
 // 4-ways traffic light
 void trafficLight4Ways() {
 	switch (currentState) {
-	case INIT_STATE:
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_All, SET);
-		currentState = NS_GREEN;
-		counter = 3;
-		break;
-
 	case NS_GREEN:
 		setLight_NS(SET, SET, RESET);		// North-South is GREEN
 		setLight_EW(RESET, SET, SET);		// East-West is RED
 		counter--;
-		if (counter == 0) {
+		if (counter <= 0) {
 			currentState = NS_YELLOW;
 			counter = 2;					// YELLOW LED is 2s
 		}
@@ -65,7 +58,7 @@ void trafficLight4Ways() {
 		setLight_NS(SET, RESET, SET);		// North-South is YELLOW
 		setLight_EW(RESET, SET, SET);		// East-West is RED
 		counter--;
-		if (counter == 0) {
+		if (counter <= 0) {
 			currentState = EW_GREEN;
 			counter = 3;					// GREEN LED is 3s
 		}
@@ -75,7 +68,7 @@ void trafficLight4Ways() {
 		setLight_NS(RESET, SET, SET);		// North-South is RED
 		setLight_EW(SET, SET, RESET);		// East-West is GREEN
 		counter--;
-		if (counter == 0) {
+		if (counter <= 0) {
 			currentState = EW_YELLOW;
 			counter = 2;					// YELLOW LED is 2s
 		}
@@ -85,10 +78,13 @@ void trafficLight4Ways() {
 		setLight_NS(RESET, SET, SET);		// North-South is RED
 		setLight_EW(SET, RESET, SET);		// East-West is YELLOW
 		counter--;
-		if (counter == 0) {
+		if (counter <= 0) {
 			currentState = NS_GREEN;
 			counter = 3;					// GREEN LED is 3s
 		}
+		break;
+
+	default:
 		break;
 	}
 }
