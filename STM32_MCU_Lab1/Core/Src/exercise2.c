@@ -25,7 +25,7 @@ void trafficLight() {
 		HAL_GPIO_WritePin(GREEN_LED_GPIO_Port, GREEN_LED_Pin, SET);
 		HAL_GPIO_WritePin(YELLOW_LED_GPIO_Port, YELLOW_LED_Pin, SET);
 		counter--;
-		if (counter == 0) {
+		if (counter <= 0) {
 			currentState = GREEN_STATE;
 			counter = 3;
 		}
@@ -36,7 +36,7 @@ void trafficLight() {
 		HAL_GPIO_WritePin(GREEN_LED_GPIO_Port, GREEN_LED_Pin, RESET);	// GREEN is ON
 		HAL_GPIO_WritePin(YELLOW_LED_GPIO_Port, YELLOW_LED_Pin, SET);
 		counter--;
-		if (counter == 0) {
+		if (counter <= 0) {
 			currentState = YELLOW_STATE;
 			counter = 2;
 		}
@@ -47,10 +47,13 @@ void trafficLight() {
 		HAL_GPIO_WritePin(GREEN_LED_GPIO_Port, GREEN_LED_Pin, SET);
 		HAL_GPIO_WritePin(YELLOW_LED_GPIO_Port, YELLOW_LED_Pin, RESET);	// YELLOW is ON
 		counter--;
-		if (counter == 0) {
+		if (counter <= 0) {
 			currentState = RED_STATE;
 			counter = 5;
 		}
+		break;
+
+	default:
 		break;
 	}
 }
