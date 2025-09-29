@@ -279,11 +279,11 @@ void displayClock() {
  8000296:	3301      	adds	r3, #1
  8000298:	4a15      	ldr	r2, [pc, #84]	; (80002f0 <displayClock+0x10c>)
  800029a:	6013      	str	r3, [r2, #0]
-	if (sec == 60) {
+	if (sec >= 60) {
  800029c:	4b14      	ldr	r3, [pc, #80]	; (80002f0 <displayClock+0x10c>)
  800029e:	681b      	ldr	r3, [r3, #0]
- 80002a0:	2b3c      	cmp	r3, #60	; 0x3c
- 80002a2:	d107      	bne.n	80002b4 <displayClock+0xd0>
+ 80002a0:	2b3b      	cmp	r3, #59	; 0x3b
+ 80002a2:	dd07      	ble.n	80002b4 <displayClock+0xd0>
 		sec = 0;
  80002a4:	4b12      	ldr	r3, [pc, #72]	; (80002f0 <displayClock+0x10c>)
  80002a6:	2200      	movs	r2, #0
@@ -296,11 +296,11 @@ void displayClock() {
  80002b2:	6013      	str	r3, [r2, #0]
 	}
 
-	if (min == 60) {
+	if (min >= 60) {
  80002b4:	4b0c      	ldr	r3, [pc, #48]	; (80002e8 <displayClock+0x104>)
  80002b6:	681b      	ldr	r3, [r3, #0]
- 80002b8:	2b3c      	cmp	r3, #60	; 0x3c
- 80002ba:	d107      	bne.n	80002cc <displayClock+0xe8>
+ 80002b8:	2b3b      	cmp	r3, #59	; 0x3b
+ 80002ba:	dd07      	ble.n	80002cc <displayClock+0xe8>
 		min = 0;
  80002bc:	4b0a      	ldr	r3, [pc, #40]	; (80002e8 <displayClock+0x104>)
  80002be:	2200      	movs	r2, #0
@@ -313,11 +313,11 @@ void displayClock() {
  80002ca:	6013      	str	r3, [r2, #0]
 	}
 
-	if (hour == 12) {
+	if (hour >= 12) {
  80002cc:	4b05      	ldr	r3, [pc, #20]	; (80002e4 <displayClock+0x100>)
  80002ce:	681b      	ldr	r3, [r3, #0]
- 80002d0:	2b0c      	cmp	r3, #12
- 80002d2:	d102      	bne.n	80002da <displayClock+0xf6>
+ 80002d0:	2b0b      	cmp	r3, #11
+ 80002d2:	dd02      	ble.n	80002da <displayClock+0xf6>
 		hour = 0;
  80002d4:	4b03      	ldr	r3, [pc, #12]	; (80002e4 <displayClock+0x100>)
  80002d6:	2200      	movs	r2, #0

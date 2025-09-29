@@ -70,17 +70,17 @@ void displayClock() {
 	preSecPos = secPos;
 
 	sec++;
-	if (sec == 60) {
+	if (sec >= 60) {
 		sec = 0;
 		min++;
 	}
 
-	if (min == 60) {
+	if (min >= 60) {
 		min = 0;
 		hour = hour + 1;
 	}
 
-	if (hour == 12) {
+	if (hour >= 12) {
 		hour = 0;
 	}
 }
