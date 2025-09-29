@@ -59,6 +59,8 @@ void displayClock() {
 	if (preSecPos != -1 && preSecPos != secPos)
 		clearNumberOnClock(preSecPos);
 
+//	clearAllClock();
+
 	setNumberOnClock(hourPos);
 	setNumberOnClock(minPos);
 	setNumberOnClock(secPos);
@@ -71,12 +73,14 @@ void displayClock() {
 	if (sec == 60) {
 		sec = 0;
 		min++;
-		if (min == 60) {
-			min = 0;
-			hour = hour + 1;
-			if (hour == 12) {
-				hour = 0;
-			}
-		}
+	}
+
+	if (min == 60) {
+		min = 0;
+		hour = hour + 1;
+	}
+
+	if (hour == 12) {
+		hour = 0;
 	}
 }

@@ -248,6 +248,8 @@ void displayClock() {
  8000268:	4618      	mov	r0, r3
  800026a:	f7ff ff8f 	bl	800018c <clearNumberOnClock>
 
+//	clearAllClock();
+
 	setNumberOnClock(hourPos);
  800026e:	68f8      	ldr	r0, [r7, #12]
  8000270:	f7ff ff6c 	bl	800014c <setNumberOnClock>
@@ -281,7 +283,7 @@ void displayClock() {
  800029c:	4b14      	ldr	r3, [pc, #80]	; (80002f0 <displayClock+0x10c>)
  800029e:	681b      	ldr	r3, [r3, #0]
  80002a0:	2b3c      	cmp	r3, #60	; 0x3c
- 80002a2:	d11a      	bne.n	80002da <displayClock+0xf6>
+ 80002a2:	d107      	bne.n	80002b4 <displayClock+0xd0>
 		sec = 0;
  80002a4:	4b12      	ldr	r3, [pc, #72]	; (80002f0 <displayClock+0x10c>)
  80002a6:	2200      	movs	r2, #0
@@ -292,32 +294,34 @@ void displayClock() {
  80002ae:	3301      	adds	r3, #1
  80002b0:	4a0d      	ldr	r2, [pc, #52]	; (80002e8 <displayClock+0x104>)
  80002b2:	6013      	str	r3, [r2, #0]
-		if (min == 60) {
+	}
+
+	if (min == 60) {
  80002b4:	4b0c      	ldr	r3, [pc, #48]	; (80002e8 <displayClock+0x104>)
  80002b6:	681b      	ldr	r3, [r3, #0]
  80002b8:	2b3c      	cmp	r3, #60	; 0x3c
- 80002ba:	d10e      	bne.n	80002da <displayClock+0xf6>
-			min = 0;
+ 80002ba:	d107      	bne.n	80002cc <displayClock+0xe8>
+		min = 0;
  80002bc:	4b0a      	ldr	r3, [pc, #40]	; (80002e8 <displayClock+0x104>)
  80002be:	2200      	movs	r2, #0
  80002c0:	601a      	str	r2, [r3, #0]
-			hour = hour + 1;
+		hour = hour + 1;
  80002c2:	4b08      	ldr	r3, [pc, #32]	; (80002e4 <displayClock+0x100>)
  80002c4:	681b      	ldr	r3, [r3, #0]
  80002c6:	3301      	adds	r3, #1
  80002c8:	4a06      	ldr	r2, [pc, #24]	; (80002e4 <displayClock+0x100>)
  80002ca:	6013      	str	r3, [r2, #0]
-			if (hour == 12) {
+	}
+
+	if (hour == 12) {
  80002cc:	4b05      	ldr	r3, [pc, #20]	; (80002e4 <displayClock+0x100>)
  80002ce:	681b      	ldr	r3, [r3, #0]
  80002d0:	2b0c      	cmp	r3, #12
  80002d2:	d102      	bne.n	80002da <displayClock+0xf6>
-				hour = 0;
+		hour = 0;
  80002d4:	4b03      	ldr	r3, [pc, #12]	; (80002e4 <displayClock+0x100>)
  80002d6:	2200      	movs	r2, #0
  80002d8:	601a      	str	r2, [r3, #0]
-			}
-		}
 	}
 }
  80002da:	bf00      	nop
